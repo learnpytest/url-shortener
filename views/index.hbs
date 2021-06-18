@@ -13,6 +13,25 @@
         <div class="card-body">
           <h5 class="card-title text-center">URL Shortener</h5>
           <p class="card-text">
+            {{#if wrong}}
+          <div class="alert alert-warning alert-dismissible fade show"
+               role="alert">
+            <strong>Sorry!</strong>
+            <ul>
+              {{#each errorArray}}
+              <li>
+                {{this.msg}}
+              </li>
+              {{/each}}
+            </ul>
+            <button type="button"
+                    class="close"
+                    data-dismiss="alert"
+                    aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          {{/if}}
           </p>
           <form action="/urls"
                 method="POST"

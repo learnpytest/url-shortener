@@ -1,4 +1,4 @@
-# Url Shorterner
+# Url Shortener
 
 A web application to provide user shortened URL
 
