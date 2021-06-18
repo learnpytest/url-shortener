@@ -20,7 +20,6 @@ app.use((req, res, next) => {
 })
 
 app.use(routes)
-
 app.use(errorHandler)
 
 app.listen(PORT, () => {

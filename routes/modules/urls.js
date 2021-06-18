@@ -39,8 +39,6 @@ router.get('/retry/:retryFullUrl', async (req, res, next) => {
 router.get('/:shortUrl', async (req, res, next) => {
   const shortUrl = req.params.retryShortUrl || req.params.shortUrl
   const urlObj = await Url.findOne({ shortUrl })
-
-  // const urlObj = await Url.findOne({ shortUrl: req.params.shortUrl })
   if (!urlObj) {
     return next(new ApiErrors().incomingRequest('url not found')) //error handling by errorHandler.js
   }
