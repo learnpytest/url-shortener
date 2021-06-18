@@ -26,7 +26,8 @@ $ npm run dev
 ## Error and exception handling
 - Error message pops up if user enter incomplete URL and will show user correct example
 - API error handling:
-  - Reply 4xx response to handle any illeagal API requests eventually
+  - Reply 4xx code responding to illeagal API requests
+  - Reply 500 code responding to internal server error
 
 ## Specification
 - Using Fsiher-Yates shuffle to increase randomness when generating shorter URL
