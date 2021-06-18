@@ -16,7 +16,7 @@
         <div class="card-body">
           <p class="card-text">
           </p>
-          <form action="/urls"
+          <form action="/urls/copy"
                 method="POST"
                 class="text-center">
             <div class="form-group">
@@ -26,13 +26,13 @@
                 <a style="background-color: #DCDCDC;"
                    name="shortUrl"
                    id="shortUrl"
-                   href="/urls/{{shortUrl}}">{{FULLURLHEAD}}{{shortUrl}}</a>
+                   href="/urls/{{shortUrl}}"><span id="show-short-url">{{FULLURLHEAD}}{{shortUrl}}</span></a>
               </p>
             </div>
             <button type="submit"
                     class="btn btn-outline-primary"
+                    id="copy-url-btn"
                     style="width: 60%;">Copy</button>
-
           </form>
 
         </div>

@@ -6,6 +6,8 @@ const urls = require('./modules/urls')
 
 const ApiErrors = require('../tools/apiErrors')
 
+router.use(express.static('public'))
+
 router.use('/urls', urls)
 router.use('/', home)
 
