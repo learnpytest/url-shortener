@@ -7,15 +7,29 @@ const { check, validationResult } = require('express-validator')
 
 const ApiErrors = require('../../tools/apiErrors') // error handling
 
+let setClock = 5
+let tries = 0
+
 //如果短網址重複需要重新產生短網址
-router.get('/retry/:retryFullUrl', async (req, res) => {
+//重新導向短網址頁面/urls/:shortUrl顯示新產生的短網址
+//在/urls/:shortUrl路由做錯誤處理，處理當使用者在/retry 路由下傳送不開放的API請求的情形
+router.get('/retry/:retryFullUrl', async (req, res, next) => {
+  if (tries > setClock) {
+    console.log('setClock, too many tries')
+    return next(new ApiErrors().incomingRequest('Too many requests error')) //error handling by errorHandler.js
+  }
+
   const originalUrl = req.params.retryFullUrl
   try {
     const urlDocCreated = await Url.create({ fullUrl: originalUrl })
-    return res.render('show.hbs', { shortUrl: urlDocCreated.shortUrl })
+    req.params.retryShortUrl = urlDocCreated.shortUrl
+    res.redirect('/urls/:shortUrl')
+    return tries = 0
   } catch (err) {
     console.log('Something wrong when createing mongodb document for saving full url and short url')
     return res.redirect(`/urls/retry/${originalUrl}`)
+  } finally {
+    tries++
   }
 })
 //如果短網址重複需要重新產生短網址
@@ -23,7 +37,10 @@ router.get('/retry/:retryFullUrl', async (req, res) => {
 //重新導向短網址所對應的網站
 //客戶端只能取得授權的資料，無效的API request應該回傳錯誤的response
 router.get('/:shortUrl', async (req, res, next) => {
-  const urlObj = await Url.findOne({ shortUrl: req.params.shortUrl })
+  const shortUrl = req.params.retryShortUrl || req.params.shortUrl
+  const urlObj = await Url.findOne({ shortUrl })
+
+  // const urlObj = await Url.findOne({ shortUrl: req.params.shortUrl })
   if (!urlObj) {
     return next(new ApiErrors().incomingRequest('url not found')) //error handling by errorHandler.js
   }
