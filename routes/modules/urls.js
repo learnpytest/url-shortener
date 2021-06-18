@@ -45,7 +45,7 @@ router.post('/', [check('fullUrl', 'Please enter complete URL, ex: http://www.go
   try {
     //資料庫每筆資料的fullUrl與shortUrl不能重複
     //fullUrl重複的情況回傳已存在的shortUrl
-    //shortUrl重複的情況重新導向/urls/retry/fullUrl路由，重新產生shortUrl
+    //shortUrl重複的情況重新導向/urls/retry/:retryFullUrl路由，重新產生shortUrl
     const originalUrl = req.params.retryFullUrl || req.body.fullUrl
     const existsFullUrl = await Url.findOne({ fullUrl: originalUrl })
     if (existsFullUrl) {

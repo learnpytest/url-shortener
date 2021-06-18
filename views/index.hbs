@@ -3,20 +3,33 @@
     <div class="col-3">
 
     </div>
-    <div class="col-6 mt-5">
-
-      <div class="card"
+    <div class="col-6 mt-3 py-3">
+      <div class="card py-3"
            style="w-100">
-        <img src="https://images.app.goo.gl/SqdC3Ls4Qz5aFAPe9"
-             class="card-img-top"
-             alt="...">
-        <div class="card-body">
+        <div class="card-title">
           <h5 class="card-title text-center">URL Shortener</h5>
-          <p class="card-text">
-            {{#if wrong}}
-          <div class="alert alert-warning alert-dismissible fade show"
+        </div>
+        <div class="card-img-top text-center">
+          <img src="https://images.pexels.com/photos/276502/pexels-photo-276502.jpeg?cs=srgb&dl=pexels-pixabay-276502.jpg&fm=jpg"
+               class="card-img-top"
+               style="width: 70%;"
+               alt="card-top-img-link">
+        </div>
+
+        <div class="card-body pb-1 pt-3">
+
+          {{#if wrong}}
+          <div class="alert alert-warning alert-dismissible fade show p-2"
                role="alert">
             <strong>Sorry!</strong>
+            <button type="button"
+                    class="close btn btn-secondary btn-sm text-right"
+                    style="float: right;"
+                    data-dismiss="alert"
+                    aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+
             <ul>
               {{#each errorArray}}
               <li>
@@ -24,15 +37,10 @@
               </li>
               {{/each}}
             </ul>
-            <button type="button"
-                    class="close"
-                    data-dismiss="alert"
-                    aria-label="Close">
-              <span aria-hidden="true">&times;</span>
-            </button>
+
           </div>
           {{/if}}
-          </p>
+
           <form action="/urls"
                 method="POST"
                 class="text-center">
@@ -46,7 +54,7 @@
                      id="fullUrl">
             </div>
             <button type="submit"
-                    class="btn btn-outline-primary"
+                    class="btn btn-outline-primary   mt-2"
                     style="width: 60%;">Shorten</button>
 
           </form>
