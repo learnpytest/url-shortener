@@ -21,4 +21,7 @@ $ npm run dev
 ## Usage
 - By entering original URL and clicking "Shorten" button, the app will generate a shorter URL for user to direct to orginal URL
 - The shoter URL that the app provids is uniquely matched to one original URL
-- Each original URL will only has one shorter URL to avoid duplication
+- With each original URL will only get one unique shorter URL to avoid duplication
+
+## Specification
+- Using Fsiher-Yates shuffle to increase randomness when generating shorter URL
