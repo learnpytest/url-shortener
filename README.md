@@ -19,9 +19,13 @@ or initializing project by nodemon using:
 $ npm run dev
 
 ## Usage
+### Index page
 - By entering original URL and clicking "Shorten" button, the app will generate a shorter URL for user to direct to orginal URL
 - The shoter URL that the app provids is uniquely matched to one original URL
 - With each original URL will only get one unique shorter URL to avoid duplication
+
+### Show page
+- By clicking the "Copy" button, user can copy the generated short url in clipboard and paste on client browser
 
 ## Error and exception handling
 - Error message pops up if user enter incomplete URL and will show user correct example
