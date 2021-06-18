@@ -4,6 +4,7 @@ const methodOverride = require('method-override')
 
 const routes = require('./routes')
 require('./config/mongoose')
+const errorHandler = require('./tools/errorHandler')
 
 const app = express()
 const PORT = process.env.PORT || 3000
@@ -19,6 +20,8 @@ app.use((req, res, next) => {
 })
 
 app.use(routes)
+
+app.use(errorHandler)
 
 app.listen(PORT, () => {
   console.log(`App is running on http://localhost:${PORT}`)

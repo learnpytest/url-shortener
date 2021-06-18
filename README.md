@@ -23,5 +23,9 @@ $ npm run dev
 - The shoter URL that the app provids is uniquely matched to one original URL
 - With each original URL will only get one unique shorter URL to avoid duplication
 
+## Error and exception handling
+- Error message pops up if user enter incomplete URL and will show user correct example
+
 ## Specification
 - Using Fsiher-Yates shuffle to increase randomness when generating shorter URL
+- Using express-validator
