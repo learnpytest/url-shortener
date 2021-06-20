@@ -1,4 +1,4 @@
-const ApiErrors = (code, msg) => {
+function ApiErrors(code, msg) {
   this.code = code
   this.msg = msg
   this.incomingRequest = function (msg) {
