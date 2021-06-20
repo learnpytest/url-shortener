@@ -1,4 +1,4 @@
-function getRandomArrPool(simpleArrPool) {
+const getRandomArrPool = (simpleArrPool) => {
   for (let index = simpleArrPool.length - 1; index > 0; index--) {
     let randomIndex = Math.floor(Math.random() * (index + 1))
       ;[simpleArrPool[index], simpleArrPool[randomIndex]] = [simpleArrPool[randomIndex], simpleArrPool[index]]
@@ -7,11 +7,11 @@ function getRandomArrPool(simpleArrPool) {
 }
 
 // sample a element from pool
-function sample(randomArrPool) {
+const sample = (randomArrPool) => {
   let randomIndex = Math.floor(Math.random() * randomArrPool.length)
   return randomArrPool[randomIndex]
 }
-function getTinyId(randomArrPool) {
+const getTinyId = (randomArrPool) => {
   let tinyId = ''
   for (let i = 1; i <= 5; i++) {
     tinyId += sample(randomArrPool)
@@ -19,7 +19,7 @@ function getTinyId(randomArrPool) {
   return tinyId
 }
 
-function tinyIdGenerator() {
+const tinyIdGenerator = () => {
   // define elements tiny ID will use
   const elements = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890'
   // create a pool to store elements 
